@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import s from './SearchBar.module.css';
 
 class Searchbar extends Component {
   state = {
@@ -13,7 +14,6 @@ class Searchbar extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-
     this.props.onSubmit(this.state);
     this.reset();
   };
@@ -24,17 +24,17 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
+      <header className={s.Searchbar}>
+        <form className={s.SearchForm} onSubmit={this.handleSubmit}>
+          <button type="submit" className={s.button}>
+            <span className={s.label}>Search</span>
           </button>
 
           <input
             value={this.state.searchInput}
             onChange={this.handleChange}
             name="searchInput"
-            className="input"
+            className={s.input}
             type="text"
             autoComplete="off"
             autoFocus
