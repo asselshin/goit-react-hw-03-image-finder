@@ -32,11 +32,10 @@ class App extends Component {
           this.state.searchInput,
           this.state.page
         );
-        const fetchedPages = Math.floor(fetchedSearch.hits.length / 12);
 
         this.setState(prevState => ({
           images: [...prevState.images, ...fetchedSearch.hits],
-          showBtn: fetchedPages ? true : false,
+          showBtn: this.state.page < Math.ceil(fetchedSearch.totalHits / 12),
         }));
 
       } catch (error) {
